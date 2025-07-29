@@ -125,7 +125,8 @@ res.status(200).json(user);
 
 // Get user by id 
 const getUserById = async(req,res) => { 
-var id = req.params.id
+
+  const id = req.params.id
 
 
 try {
