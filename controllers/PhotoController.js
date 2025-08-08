@@ -38,7 +38,7 @@ const deletePhoto = async (req, res) => {
 
     // Check if photo exists
     if (!photo) {
-      res.status(404).json({ errors: ["Foto não encontrada! 1"] });
+      res.status(404).json({ errors: ["Foto não encontrada!"] });
       return;
     }
 
@@ -47,6 +47,7 @@ const deletePhoto = async (req, res) => {
       res.status(422).json({
         errors: ["Ocorreu um erro, por favor tente novamente mais tarde!"],
       });
+      return;
     }
 
     await Photo.findByIdAndDelete(photo._id);
@@ -55,7 +56,7 @@ const deletePhoto = async (req, res) => {
       .status(200)
       .json({ id: photo._id, message: "Foto exclúida com sucesso!" });
   } catch (error) {
-    res.status(404).json({ errors: ["Foto não encontrada! 2"] });
+    res.status(404).json({ errors: ["Foto não encontrada!"] });
     return;
   }
 };
