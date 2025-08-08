@@ -35,7 +35,6 @@ const commentValidation = () => {
         body("comments")
             .isString()
             .withMessage("O comentário é obrigatório!"),
-
     ];
 };
 
