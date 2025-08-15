@@ -73,8 +73,9 @@ const login = async (req, res) => {
   // Return user with token
   res.status(201).json({
     _id: user._id,
-    profileImage: user.profileimage,
+    profileImage: user.profileImage,
     token: generateToken(user._id),
+    message: [`${user.name} login realizado com sucesso!`]
   });
 
 };
@@ -176,7 +177,7 @@ const deleteUser = async (req, res) => {
     // Delete the user
     await User.findByIdAndDelete(user._id);
 
-    res.status(200).json({id: user._id, message: "Usuário Deletado com sucesso!"});
+    res.status(200).json({id: user._id, message:`Usuário ${user.email} deletado com sucesso!`});
 
   } catch (error) {
     res.status(404).json({ errors: ["Usuário não encontrado!"]});
